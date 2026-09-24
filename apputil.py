@@ -64,9 +64,13 @@ def task_2():
 
 def task_3():
     """Return the average age for each gender."""
+    gender = df_bellevue['gender'].replace(
+        ['?', 'g', 'h'], np.nan
+    )
+
     if df_bellevue['age'].isna().any():
         print("Some age values are missing and excluded from the average.")
-    return df_bellevue.groupby('gender')['age'].mean()
+    return df_bellevue.groupby(gender)['age'].mean()
 
 
 def task_4():
@@ -78,4 +82,4 @@ def task_4():
         .index
         .tolist()
     )
-    
+ 
